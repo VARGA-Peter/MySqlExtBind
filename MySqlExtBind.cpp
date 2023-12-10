@@ -68,7 +68,7 @@ namespace FaF
         // Needed only for the regex test.
         bool anyMatchFound {};
 
-        const std::string resolvedPattern {                                 // @suppress("Invalid arguments")
+        const std::string resolvedPattern {
             MySqlExtBind::m_leftDelimiter +
             R"~((\w+))~" +
             MySqlExtBind::m_rightDelimiter
@@ -86,8 +86,8 @@ namespace FaF
 
             while( currentRegexMatch != endMarker ) {
 
-                const std::string fullMatch { (*currentRegexMatch) [0] };        // @suppress("Invalid arguments")
-                const std::string onlyMatch { (*currentRegexMatch) [1] };        // @suppress("Invalid arguments")
+                const std::string fullMatch { (*currentRegexMatch) [0] };
+                const std::string onlyMatch { (*currentRegexMatch) [1] };
 
                 // Add the found bind variable to the container. The MYSQL_BIND item is empty - it will be set in assignBindData().
                 m_bindNamesContainer.insert( MapContainer::value_type( onlyMatch, { m_bindVariablesCount++ } ) );

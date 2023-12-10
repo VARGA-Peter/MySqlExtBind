@@ -37,7 +37,7 @@ namespace FaF
 
     };
 
-    using MapContainer = std::map< const std::string, MapItem >;        // @suppress("Invalid template arguments")
+    using MapContainer = std::map< const std::string, MapItem >;
 
     class MySqlExtBind
     {
