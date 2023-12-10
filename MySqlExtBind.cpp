@@ -13,7 +13,6 @@
 
 #include "MySqlExtBind.h"
 
-bool        FaF::MySqlExtBind::m_regexHasBeenChecked {};
 std::string FaF::MySqlExtBind::m_leftDelimiter       { ":" };
 std::string FaF::MySqlExtBind::m_rightDelimiter      {};
 

@@ -57,9 +57,6 @@ namespace FaF
                 const std::string   m_mysqlCommand;
                 std::string         m_adjustedMysqlCommand;
 
-            // Flag if the regex check has been done to assure the delimiters are correctly recognised.
-            static bool             m_regexHasBeenChecked;
-
             // The left and right delimiter - can be overwritten any time using the static function ::setDelimiters()
             static std::string      m_leftDelimiter;
             static std::string      m_rightDelimiter;
