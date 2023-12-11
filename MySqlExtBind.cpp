@@ -106,7 +106,7 @@ namespace FaF
 
                 // The pattern seems not to work. The test pattern hasn't been found. Throw an exception.
                 std::cerr
-                    << "No bind variable has been found with the provided delimiters. "         << std::endl
+                    << "Exception #1: No bind variable has been found with the provided delimiters. "         << std::endl
                     << " 1) Check the delimiters. Have the characters been correctly escaped?"  << std::endl
                     << " 2) Are the bind variables between the delimiters?"                     << std::endl
                     << " 3) At least one bind variable must be used in the SQL command."        << std::endl
@@ -118,7 +118,7 @@ namespace FaF
         } catch ( std::regex_error const & ) {
 
             // A fatal regex error - the delimiters are nonsense.
-            std::cerr << "Regex exception raised. Check the delimiters and if characters have been correctly escaped." << std::endl;
+            std::cerr << "Exception #2. Regex failed. Check the delimiters and if characters have been correctly escaped." << std::endl;
             throw FaF::Exception();
 
         }
@@ -126,7 +126,7 @@ namespace FaF
     }
 
     /**
-     * Overload for const std::string
+     * Binds the value in the provided MYSQL_BIND structure to the bind variable.
      * Note: If <bindName> is not found in the map, an exception is thrown!
      *
      * @param bindName
@@ -199,7 +199,7 @@ namespace FaF
             using namespace std::string_literals;
 
             std::cerr
-                << "Bind variable ["s + bindVariable.c_str() + "] not found. Mostly a typo or an incorrect delimiters."s
+                << "Exception #3: Bind variable ["s + bindVariable.c_str() + "] not found. Mostly a typo or an incorrect delimiters."s
                 << std::endl;
             throw FaF::Exception();
 
@@ -233,6 +233,9 @@ namespace FaF
 
         for ( auto const & [bindVariable, bindItem] : m_bindNamesContainer ) {
 
+            // Avoid a warning which would be treated as an error.
+            (void) bindVariable;
+
             /**
              * Just copy to the index which corresponds the position of the bind variable in the SQL command
              * the earlier provided MYSQL_BIND item.
@@ -259,7 +262,7 @@ namespace FaF
         if ( 0 != bindVariablesList.length() ) {
 
             std::cerr
-                << "For the bind variables in the below list assignBindData() has NOT been called." << std::endl
+                << "Exception #4: For the bind variables in the below list assignBindData() has NOT been called." << std::endl
                 << "[" + bindVariablesList + "]"
                 << std::endl;
             throw FaF::Exception();
