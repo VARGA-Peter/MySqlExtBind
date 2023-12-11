@@ -223,7 +223,7 @@ The delimiters for left and right can be set individually. Keep in mind to escap
 _Examples:_
 
 ```cpp
-FaF::MySqlExtBind::setDelimiters( ":\\{", "\\]" );
+FaF::MySqlExtBind::setDelimiters( ":\\{", "\\}" );
 ```
 
 >    … Format of the bind variables in the MySQL command …
