@@ -290,7 +290,7 @@ The C++ compiler could process the pattern string but the Regex parser doesn't u
 FaF::MySqlExtBind::setDelimiters( R"(()", R"(\\)" );
 ```
 
-In this case the opening `(` must be escaped even the C++ compiler understands it.
+In this case the opening `(` must be escaped \[`R"(\()"`\] - this results to this format: `(bindInt\` - even the C++ compiler understands it.
 
 #### Exception #3:
 
